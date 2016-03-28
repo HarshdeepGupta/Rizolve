@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.hd.rizolve.Login">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_margin="16dp"
+        android:padding="8dp"
+        android:orientation = "vertical"
+        android:gravity="center"
+        >
+
+    <EditText
+        android:id = "@+id/username"
+        android:layout_width = "match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+
+        android:drawablePadding="10dp"
+        android:textColorHint="#AFB6C0"
+        android:textSize="22dp"
+        android:textColor="#AFB6C0"
+        android:padding="5dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginLeft="35dp"
+        />
+    <EditText
+        android:id = "@+id/password"
+        android:layout_width = "match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+
+        android:drawablePadding="10dp"
+        android:textColorHint="#AFB6C0"
+        android:inputType="textPassword"
+        android:padding="5dp"
+        android:textSize="22dp"
+        android:textColor="#AFB6C0"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginLeft="35dp"
+
+        />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="login_method"
+        android:text="Sign In"
+        android:background="#3EC5CC"
+        android:textColor="#E4EBED"
+        android:gravity="center"
+        android:layout_margin="8dp"
+        android:textSize="20dp"
+        android:padding="5dp"
+        android:elevation="4dp" />
+
+   </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
