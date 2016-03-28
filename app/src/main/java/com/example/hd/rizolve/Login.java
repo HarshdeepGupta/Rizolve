@@ -67,7 +67,7 @@ public class Login extends AppCompatActivity {
         manager.setCookiePolicy(CookiePolicy.ACCEPT_ORIGINAL_SERVER);
 
         global = ((Globals) this.getApplication());
-        global.setServerAddress("http://192.168.0.111:8000/complaint1");
+        global.setServerAddress("http://192.168.43.221:8000/complaint1");
 
         serverAddress = global.getServerAddress();
 
@@ -280,7 +280,7 @@ public class Login extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("FIRST_NAME", first_name);
         bundle.putString("LAST_NAME", last_name);
-        bundle.putString("NOTIFICATION_LIST", notification_array.toString());
+        bundle.putString("NotificationList", notification_array.toString());
         bundle.putString("UserComplains",userComplains.toString());
         bundle.putString("HostelComplains",hostelComplains.toString());
         bundle.putString("InstiComplains",instiComplains.toString());

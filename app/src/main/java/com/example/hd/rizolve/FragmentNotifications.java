@@ -23,7 +23,7 @@ public class FragmentNotifications extends Fragment {
 
 
 
-    private OnFragmentInteractionListener mListener;
+
 
     public FragmentNotifications() {
         // Required empty public constructor
@@ -34,6 +34,8 @@ public class FragmentNotifications extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MainActivity activity = (MainActivity) getActivity();
+        notifications_data =  activity.getNotificationData();
 
 
     }
@@ -55,18 +57,14 @@ public class FragmentNotifications extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
+        MainActivity activity = (MainActivity) getActivity();
+        notifications_data =  activity.getNotificationData();
         mAdapter = new Adapter_Notifications(notifications_data);
+
         mRecyclerView.setAdapter(mAdapter);
         return view;
 
 
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onNotificationFragmentInteraction(uri);
-        }
     }
 
 
@@ -80,8 +78,5 @@ public class FragmentNotifications extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onNotificationFragmentInteraction(Uri uri);
-    }
+
 }

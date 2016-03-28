@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -17,9 +18,18 @@ import java.util.ArrayList;
  */
 public class Adapter_Notifications extends RecyclerView.Adapter<Adapter_Notifications.ViewHolder> {
     private ArrayList<Data_Model_Notifications> notificationsData;
-    Context context;
+
 
     public Adapter_Notifications(JSONArray ndata) {
+//        JSONArray ndata1 = null;
+//        try{
+//          ndata1 = ndata.getJSONArray("notifications");
+//        } catch (JSONException e) {
+//          e.printStackTrace();
+//        }
+
+
+
         notificationsData = Data_Model_Notifications.fromJson(ndata);
     }
 

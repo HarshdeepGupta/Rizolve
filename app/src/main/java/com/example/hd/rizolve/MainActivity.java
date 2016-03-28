@@ -1,5 +1,6 @@
 package com.example.hd.rizolve;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -20,6 +21,10 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.net.URI;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +36,22 @@ public class MainActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    private JSONObject userComplains,hostelComplains,instiComplains;
+    private JSONArray notificationData;
+
+    public JSONObject getUserComplains(){
+        return userComplains;
+    }
+    public JSONObject getHostelComplains(){
+        return hostelComplains;
+    }
+    public JSONObject getInstiComplains(){
+        return instiComplains;
+    }
+    public JSONArray getNotificationData(){
+        return notificationData;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +60,17 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //Get the data from the intent
+        Intent intent = getIntent();
+        try{
+            userComplains = new JSONObject(intent.getStringExtra("UserComplains"));
+            hostelComplains = new JSONObject(intent.getStringExtra("HostelComplains"));
+            instiComplains = new JSONObject(intent.getStringExtra("InstiComplains"));
+            notificationData = new JSONArray(intent.getStringExtra("NotificationList"));
+        }
+        catch (JSONException e){
+
+        }
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -112,9 +144,6 @@ public class MainActivity extends AppCompatActivity {
             return fragment;
         }
 
-        public void onNotificationFragmentInteraction(Uri uri){
-
-        }
 
         @Override
         public int getCount() {
@@ -126,13 +155,13 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "My Notifications";
                 case 1:
-                    return "SECTION 2";
+                    return "My Complains";
                 case 2:
-                    return "SECTION 3";
+                    return "Hostel Complains";
                 case 3:
-                    return "SECTION 4";
+                    return "Institute Complains";
             }
             return null;
         }

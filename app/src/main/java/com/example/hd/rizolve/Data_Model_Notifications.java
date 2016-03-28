@@ -47,7 +47,7 @@ public class Data_Model_Notifications {
     public static ArrayList<Data_Model_Notifications> fromJson(JSONArray jsonObjects) {
 
         Log.i("hagga", "FromJSONcalled" );
-        ArrayList<Data_Model_Notifications> gradesData = new ArrayList<Data_Model_Notifications>();
+        ArrayList<Data_Model_Notifications> gradesData = new ArrayList<>();
         for (int i = 0; i < jsonObjects.length(); i++) {
             try {
                 gradesData.add(new Data_Model_Notifications(jsonObjects.getJSONObject(i)));
@@ -56,6 +56,7 @@ public class Data_Model_Notifications {
             }
         }
         Log.i("hagga", "FromJSONFinished");
+
         return gradesData;
     }
 }
