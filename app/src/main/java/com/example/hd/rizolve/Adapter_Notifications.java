@@ -4,6 +4,7 @@ package com.example.hd.rizolve;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -35,6 +36,7 @@ public class Adapter_Notifications extends RecyclerView.Adapter<Adapter_Notifica
     static String serverAddress;
     static RequestQueue myQueue;
     final int duration = Toast.LENGTH_LONG;
+    JSONObject complaint_details;
 
     Globals global;
     Context context;
@@ -70,13 +72,7 @@ public class Adapter_Notifications extends RecyclerView.Adapter<Adapter_Notifica
             createdAt = (TextView) v.findViewById(R.id.notification_created_at);
             isseen = (CheckBox) v.findViewById(R.id.is_seen_box);
             cardView = (CardView) v.findViewById(R.id.notification_card_view);
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(v.getContext(),ComplaintsActivity.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
+
         }
 
 
@@ -140,6 +136,65 @@ public class Adapter_Notifications extends RecyclerView.Adapter<Adapter_Notifica
             }
 
         });
+
+        final String complaint_id = item.complaint_id;
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+
+
+                String url_complaints_detail = serverAddress.concat("/complaint/complaint_data.json?complaint_id=").
+                        concat(String.valueOf(complaint_id));
+
+                JsonObjectRequest request0 = new JsonObjectRequest(Request.Method.GET,url_complaints_detail,
+                        null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        complaint_details = response;
+
+                        JSONObject temp;
+                        temp = null;
+                        String up = null;
+                        String down = null;
+                        try {
+                            temp = complaint_details.getJSONObject("complaint");
+                            up = String.valueOf(temp.getInt("up_vote_"));
+                            down = String.valueOf(temp.getInt("down_vote_"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+                        Intent intent = new Intent(v.getContext(),ComplaintsActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("complaint_details", complaint_details.toString());
+                        bundle.putString("title",item.title);
+                        bundle.putString("postedBy",item.postedBy);
+                        bundle.putString("created_at",item.created_at);
+                        bundle.putString("description",item.description);
+                        bundle.putString("upvote",String.valueOf(up));
+                        bundle.putString("downvote", String.valueOf(down));
+                        bundle.putString("id", String.valueOf(item.complaint_id));
+                        intent.putExtras(bundle);
+                        v.getContext().startActivity(intent);
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast toast = Toast.makeText(context, "Network Error", duration);
+                        toast.show();
+                    }
+                }) ;
+                //Add the first request in the queue
+                myQueue.add(request0);
+            }
+        });
+
+
 
     }
 
