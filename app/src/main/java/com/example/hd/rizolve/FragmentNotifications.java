@@ -58,8 +58,9 @@ public class FragmentNotifications extends Fragment {
 
         // specify an adapter (see also next example)
         MainActivity activity = (MainActivity) getActivity();
+        Context context = (MainActivity) getContext();
         notifications_data =  activity.getNotificationData();
-        mAdapter = new Adapter_Notifications(notifications_data);
+        mAdapter = new Adapter_Notifications(notifications_data,activity,context);
         Log.i("hagga",notifications_data.toString());
 
         mRecyclerView.setAdapter(mAdapter);

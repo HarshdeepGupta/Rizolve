@@ -29,6 +29,14 @@
                 android:textSize="20sp"
                 android:padding="5dp"
                 android:text="Title" />
+            <CheckBox
+                android:id="@+id/is_seen_box"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Seen"
+                android:layout_above="@+id/notification_posted_by"
+                android:layout_toStartOf="@+id/notification_posted_by" />
 
             <TextView
                 android:layout_width="wrap_content"

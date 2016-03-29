@@ -22,7 +22,7 @@ public class Data_Model_Notifications {
     public String created_at;
     public String complaint_id;
     public String notification_id;
-
+    public int is_seen;
 
 
 
@@ -45,6 +45,7 @@ public class Data_Model_Notifications {
             String complaint_id = object.getString("complaint_id");
             String notification_id = object.getString("id");
             String title = object.getString("title");
+            int is_seen = object.getInt("is_seen");
             Document doc = Jsoup.parse(description);
             org.jsoup.select.Elements links = doc.select("a");
             String name = links.get(0).text();
@@ -54,9 +55,10 @@ public class Data_Model_Notifications {
             this.complaint_id = complaint_id;
             this.notification_id = notification_id;
             this.title = title;
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            this.is_seen = is_seen;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
     }

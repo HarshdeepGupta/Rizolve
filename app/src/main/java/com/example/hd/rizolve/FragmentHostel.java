@@ -51,8 +51,9 @@ public class FragmentHostel extends Fragment {
 
         // specify an adapter (see also next example)
         MainActivity activity = (MainActivity) getActivity();
+        Context context = (MainActivity) getContext();
         complaints_data =  activity.getHostelComplains();
-        mAdapter = new Adapter_Complaints(complaints_data);
+        mAdapter = new Adapter_Complaints(complaints_data,activity,context);
         //Log.i("hagga", complaints_data.toString());
 
         mRecyclerView.setAdapter(mAdapter);

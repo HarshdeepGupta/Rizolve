@@ -33,7 +33,7 @@ public class Adapter_Comment extends RecyclerView.Adapter<Adapter_Comment.ViewHo
             super(v);
             postedBy = (TextView) v.findViewById(R.id.comment_posted_by);
             description = (TextView) v.findViewById(R.id.comment_description);
-            time_elapsed = (TextView) v.findViewById(R.id.comment_created_at)
+            time_elapsed = (TextView) v.findViewById(R.id.comment_created_at);
         }
     }
 
@@ -54,11 +54,10 @@ public class Adapter_Comment extends RecyclerView.Adapter<Adapter_Comment.ViewHo
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         Data_Model_Comment item =  CommentsData.get(position);
-        holder.name.setText(item.name);
+        holder.time_elapsed.setText(item.time_elapsed);
         holder.description.setText(item.description);
-        holder.email_view.setText(item.email);
-        holder.times_readable_view.setText(item.times_readable);
-        holder.date_view.setText(item.date);
+        holder.postedBy.setText(item.posted_by);
+
 
     }
 
