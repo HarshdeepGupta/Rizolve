@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.hd.rizolve.add_complaint">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_add_complaint" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="100dp">
+    <RadioButton
+        android:id="@+id/individual_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Self"/>
+        <RadioButton
+            android:id="@+id/hostel_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hostel"/>
+        <RadioButton
+            android:id="@+id/insti_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Institute"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/complaint_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:hint="Title"/>
+    <EditText
+        android:id="@+id/complaint_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:hint="Description"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="350dp">
+
+        <RadioButton
+            android:id="@+id/student_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Visibile to Student"/>
+        <RadioButton
+            android:id="@+id/faculty_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Visibility to Faculty"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/decide_individual"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="400dp"
+        android:visibility="invisible">
+
+        <RadioButton
+            android:id="@+id/mess_individual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mess"/>
+        <RadioButton
+            android:id="@+id/main_individual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Maintainence"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/decide_insti"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="400dp"
+        android:visibility="invisible"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="400dp"
+        >
+
+        <RadioButton
+            android:id="@+id/dean1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Academics"/>
+        <RadioButton
+            android:id="@+id/dean2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Faculty"/>
+        <RadioButton
+            android:id="@+id/dean3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IRD"/>
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="400dp"
+            >
+        <RadioButton
+            android:id="@+id/dean4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Affairs"/>
+        <RadioButton
+            android:id="@+id/dean5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Infrastructure"/>
+        <RadioButton
+            android:id="@+id/dean6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alumni Affairs"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+    <Button
+        android:id="@+id/complaint_post"
+        android:layout_width="100dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500dp"
+        android:text="Post"
+        android:onClick="post_complaint"
+        />
+
+
+</android.support.design.widget.CoordinatorLayout>

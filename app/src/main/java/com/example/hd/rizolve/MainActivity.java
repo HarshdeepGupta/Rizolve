@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     static String serverAddress;
     static RequestQueue volleyQueue;
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
+    Globals global;
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -92,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        global = ((Globals) this.getApplication());
+        serverAddress = global.getServerAddress();
+        volleyQueue = global.getVolleyQueue();
 
     }
 
@@ -154,6 +157,50 @@ public class MainActivity extends AppCompatActivity {
         volleyQueue.add(request1);
 
     }
+
+    public void call_resolve(MenuItem item) {
+        final Context context = getApplicationContext();
+        final int duration = Toast.LENGTH_LONG;
+
+        Log.i("hagga1","getting here200");
+        String url_resolving = serverAddress.concat("/default/all_complaints_to_be_resolved.json");
+        Log.i("hagga1","getting here100");
+        JsonObjectRequest request1 = new JsonObjectRequest(Request.Method.GET,url_resolving,null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.i("hagga1", "getting here");
+                success_callback(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast toast = Toast.makeText(context, "Network Error", duration);
+                toast.show();
+            }
+        }) ;
+
+        volleyQueue.add(request1);
+
+    }
+
+    public void success_callback(JSONObject response){
+        Log.i("hagga1","getting here");
+        Intent intent = new Intent(this,resolve.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("complaints", response.toString());
+        intent.putExtras(bundle);
+        startActivity(intent);
+        Log.i("hagga1", "getting here000");
+    }
+
+    public void add_complaint(MenuItem item){
+        Intent intent = new Intent(this,add_complaint.class);
+        Bundle bundle = new Bundle();
+        startActivity(intent);
+    }
+
+
 
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {

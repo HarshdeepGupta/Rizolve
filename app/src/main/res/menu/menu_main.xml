@@ -8,4 +8,18 @@
         android:title="@string/logout"
         android:onClick="logout_method"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/Resolve"
+        android:orderInCategory="100"
+        android:title="Resolve"
+        android:onClick="call_resolve"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/add_complaint"
+        android:orderInCategory="100"
+        android:title="Add Complaint"
+        android:onClick="add_complaint"
+        app:showAsAction="never" />
 </menu>
