@@ -7,13 +7,15 @@
     <!-- A CardView that contains a TextView -->
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view"
+        android:id="@+id/notification_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="10dp"
         android:padding="10dp"
         android:layout_margin="10dp"
-        card_view:cardCornerRadius="4dp">
+        card_view:cardCornerRadius="4dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -29,7 +31,16 @@
                 android:text="Title"
                 android:textAlignment="center"
                 android:background="#c6e2ff"
-                android:textColor="#009CEF"/>
+                android:textColor="#009CEF" />
+            <CheckBox
+                android:id="@+id/is_seen_box"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Seen"
+                android:layout_above="@+id/notification_posted_by"
+                android:layout_toStartOf="@+id/notification_posted_by" />
+
 
             <TextView
                 android:layout_width="wrap_content"

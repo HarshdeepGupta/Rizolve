@@ -14,14 +14,7 @@ import android.view.ViewGroup;
 import org.json.JSONObject;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentInstitute.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentInstitute#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FragmentInstitute extends Fragment {
 
     private RecyclerView mRecyclerView;
@@ -59,8 +52,9 @@ public class FragmentInstitute extends Fragment {
 
         // specify an adapter (see also next example)
         MainActivity activity = (MainActivity) getActivity();
+        Context context = (MainActivity) getContext();
         complaints_data =  activity.getInstiComplains();
-        mAdapter = new Adapter_Complaints(complaints_data);
+        mAdapter = new Adapter_Complaints(complaints_data,activity,context);
         //Log.i("hagga", complaints_data.toString());
 
         mRecyclerView.setAdapter(mAdapter);
