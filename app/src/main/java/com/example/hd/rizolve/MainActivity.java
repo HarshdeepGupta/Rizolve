@@ -1,5 +1,6 @@
 package com.example.hd.rizolve;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
@@ -21,6 +22,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,6 +39,8 @@ import java.net.URI;
 public class MainActivity extends AppCompatActivity {
 
 
+    static String serverAddress;
+    static RequestQueue volleyQueue;
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
@@ -93,19 +103,56 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        final Context context = getApplicationContext();
+//        final int duration = Toast.LENGTH_LONG;
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.Logout) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+    //Click Listener for logout
+    public void logout_method(MenuItem item) {
 
-        return super.onOptionsItemSelected(item);
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+
+    }
+
+    //Click Listener for logout
+    public void logout(MenuItem item) {
+        final Context context = getApplicationContext();
+        final int duration = Toast.LENGTH_LONG;
+
+
+        String url_logout = serverAddress.concat("/default/logout.json");
+        JsonObjectRequest request1 = new JsonObjectRequest(Request.Method.GET,url_logout,null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast toast = Toast.makeText(context, "Logged Out", duration);
+                toast.show();
+                finish();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast toast = Toast.makeText(context, "Network Error", duration);
+                toast.show();
+            }
+        }) ;
+
+        volleyQueue.add(request1);
+
     }
 
 

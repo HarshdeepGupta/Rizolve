@@ -31,54 +31,80 @@
         android:orientation = "vertical"
         android:gravity="center"
         >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/app"
+            android:layout_marginTop="50dp"/>
 
-    <EditText
-        android:id = "@+id/username"
-        android:layout_width = "match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Username"
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Complaint"
+            android:textColor="#009CEF"
+            android:textSize="50dp"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif"
+            />
 
-        android:drawablePadding="10dp"
-        android:textColorHint="#AFB6C0"
-        android:textSize="22dp"
-        android:textColor="#AFB6C0"
-        android:padding="5dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginLeft="35dp"
-        />
-    <EditText
-        android:id = "@+id/password"
-        android:layout_width = "match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="System"
+            android:textColor="#009CEF"
+            android:textSize="50dp"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif"
+            android:layout_marginBottom="20dp"
+            />
 
-        android:drawablePadding="10dp"
-        android:textColorHint="#AFB6C0"
-        android:inputType="textPassword"
-        android:padding="5dp"
-        android:textSize="22dp"
-        android:textColor="#AFB6C0"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginLeft="35dp"
+        <EditText
+            android:id = "@+id/username"
+            android:layout_width = "match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:drawableLeft="@drawable/user"
+            android:drawablePadding="10dp"
+            android:textColorHint="#AFB6C0"
+            android:textSize="22dp"
+            android:textColor="#AFB6C0"
+            android:padding="5dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            />
+        <EditText
+            android:id = "@+id/password"
+            android:layout_width = "match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:drawableLeft="@drawable/pass"
+            android:drawablePadding="10dp"
+            android:textColorHint="#AFB6C0"
+            android:inputType="textPassword"
+            android:padding="5dp"
+            android:textSize="22dp"
+            android:textColor="#AFB6C0"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
 
-        />
+            />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="login_method"
-        android:text="Sign In"
-        android:background="#3EC5CC"
-        android:textColor="#E4EBED"
-        android:gravity="center"
-        android:layout_margin="8dp"
-        android:textSize="20dp"
-        android:padding="5dp"
-        android:elevation="4dp" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="login_method"
+            android:text="Sign In"
+            android:background="#3EC5CC"
+            android:textColor="#E4EBED"
+            android:gravity="center"
+            android:layout_margin="8dp"
+            android:textSize="20dp"
+            android:padding="5dp"
+            android:elevation="4dp" />
 
-   </LinearLayout>
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
