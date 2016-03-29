@@ -26,13 +26,17 @@
                 android:gravity="center_vertical"
                 android:textSize="20sp"
                 android:padding="5dp"
-                android:text="Title" />
+                android:text="Title"
+                android:textAlignment="center"
+                android:background="#c6e2ff"
+                android:textColor="#009CEF"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="By:"
+                android:textColor="#8b0000"
                 android:padding="5dp"
                 android:id="@+id/notification_posted_by"
                 android:layout_below="@+id/notification_title"
@@ -41,8 +45,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="At:"
+                android:textColor="#8b0000"
                 android:padding="5dp"
                 android:id="@+id/notification_created_at"
                 android:layout_below="@+id/notification_title"
@@ -51,12 +56,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Description"
                 android:padding="5dp"
                 android:id="@+id/notification_description"
                 android:layout_below="@+id/notification_created_at"
                 android:layout_alignParentStart="true"
+                android:layout_marginBottom="20dp"
                 android:layout_alignParentEnd="true" />
 
 
