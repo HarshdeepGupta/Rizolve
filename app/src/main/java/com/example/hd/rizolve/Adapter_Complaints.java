@@ -1,6 +1,8 @@
 package com.example.hd.rizolve;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,20 +36,20 @@ public class Adapter_Complaints extends RecyclerView.Adapter<Adapter_Complaints.
             e.printStackTrace();
         }
         ComplaintsData = Data_Model_Complaints.fromJson(object1,object2);
-            //Log.i("hagga1",ndata.toString());
-        //Log.i("hagga1",ComplaintsData.get(1).date);
+
     }
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
+        public CardView cardView;
         public TextView title;
         public TextView description;
         public TextView postedBy;
         public TextView createdAt;
         public Button upvote;
         public Button downvote;
-        public ViewHolder(View v) {
+        public ViewHolder(final View v) {
             super(v);
             title = (TextView) v.findViewById(R.id.complaint_title);
             description = (TextView) v.findViewById(R.id.complaint_description);
@@ -55,6 +57,14 @@ public class Adapter_Complaints extends RecyclerView.Adapter<Adapter_Complaints.
             createdAt = (TextView) v.findViewById(R.id.complaint_created_at);
             upvote = (Button) v.findViewById(R.id.complain_upvote);
             downvote = (Button) v.findViewById(R.id.complain_downvote);
+            cardView = (CardView) v.findViewById(R.id.complaint_card_view);
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(v.getContext(),ComplaintsActivity.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
     }
 

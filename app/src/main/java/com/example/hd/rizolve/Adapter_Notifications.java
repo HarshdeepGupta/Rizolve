@@ -1,6 +1,8 @@
 package com.example.hd.rizolve;
 
 
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,12 +40,21 @@ public class Adapter_Notifications extends RecyclerView.Adapter<Adapter_Notifica
         public TextView description;
         public TextView postedBy;
         public TextView createdAt;
-        public ViewHolder(View v) {
+        public CardView cardView;
+        public ViewHolder(final View v) {
             super(v);
             title = (TextView) v.findViewById(R.id.notification_title);
             description = (TextView) v.findViewById(R.id.notification_description);
             postedBy = (TextView) v.findViewById(R.id.notification_posted_by);
             createdAt = (TextView) v.findViewById(R.id.notification_created_at);
+            cardView = (CardView) v.findViewById(R.id.notification_card_view);
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(v.getContext(),ComplaintsActivity.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
     }
 
