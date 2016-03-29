@@ -19,7 +19,7 @@ public class FragmentNotifications extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    JSONArray notifications_data;
+    JSONObject notifications_data;
 
 
 
@@ -60,23 +60,12 @@ public class FragmentNotifications extends Fragment {
         MainActivity activity = (MainActivity) getActivity();
         notifications_data =  activity.getNotificationData();
         mAdapter = new Adapter_Notifications(notifications_data);
+        Log.i("hagga",notifications_data.toString());
 
         mRecyclerView.setAdapter(mAdapter);
         return view;
 
 
     }
-
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
 
 }

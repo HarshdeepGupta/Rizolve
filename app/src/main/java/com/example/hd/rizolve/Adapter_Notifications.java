@@ -1,7 +1,8 @@
 package com.example.hd.rizolve;
 
-import android.content.Context;
+
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,17 +21,14 @@ public class Adapter_Notifications extends RecyclerView.Adapter<Adapter_Notifica
     private ArrayList<Data_Model_Notifications> notificationsData;
 
 
-    public Adapter_Notifications(JSONArray ndata) {
-//        JSONArray ndata1 = null;
-//        try{
-//          ndata1 = ndata.getJSONArray("notifications");
-//        } catch (JSONException e) {
-//          e.printStackTrace();
-//        }
-
-
-
-        notificationsData = Data_Model_Notifications.fromJson(ndata);
+    public Adapter_Notifications(JSONObject ndata) {
+        JSONArray ndata1 = null;
+        try{
+          ndata1 = ndata.getJSONArray("notifications");
+        } catch (JSONException e) {
+          e.printStackTrace();
+        }
+        notificationsData = Data_Model_Notifications.fromJson(ndata1);
     }
 
 
@@ -39,9 +37,13 @@ public class Adapter_Notifications extends RecyclerView.Adapter<Adapter_Notifica
         public TextView title;
         public TextView description;
         public TextView postedBy;
+        public TextView createdAt;
         public ViewHolder(View v) {
             super(v);
             title = (TextView) v.findViewById(R.id.notification_title);
+            description = (TextView) v.findViewById(R.id.notification_description);
+            postedBy = (TextView) v.findViewById(R.id.notification_posted_by);
+            createdAt = (TextView) v.findViewById(R.id.notification_created_at);
         }
     }
 
@@ -62,7 +64,14 @@ public class Adapter_Notifications extends RecyclerView.Adapter<Adapter_Notifica
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         Data_Model_Notifications item =  notificationsData.get(position);
+
+        String a = "At: "+item.created_at;
+        String b = "By: "+item.postedBy;
         holder.title.setText(item.title);
+        holder.createdAt.setText(a);
+        holder.postedBy.setText(b);
+        holder.description.setText(item.description);
+
 
     }
 

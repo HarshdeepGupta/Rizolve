@@ -5,6 +5,8 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.util.ArrayList;
 
@@ -17,6 +19,11 @@ public class Data_Model_Notifications {
     public String title;
     public String postedBy;
     public String description;
+    public String created_at;
+    public String complaint_id;
+    public String notification_id;
+
+
 
 
 
@@ -31,22 +38,32 @@ public class Data_Model_Notifications {
 
     public Data_Model_Notifications(JSONObject object) {
 
-        Log.i("hagga", "Datamodel Constructor Called");
-        try {
-            this.title = object.getString("title");
-            this.description = object.getString("description");
-            this.postedBy = object.getString("postedBy");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
-        Log.i("hagga", "Datamodel Constructor Finished");
+        try {
+            String created = object.getString("created_at");
+            String description = object.getString("description");
+            String complaint_id = object.getString("complaint_id");
+            String notification_id = object.getString("id");
+            String title = object.getString("title");
+            Document doc = Jsoup.parse(description);
+            org.jsoup.select.Elements links = doc.select("a");
+            String name = links.get(0).text();
+            this.postedBy = name;
+            this.description = doc.text();
+            this.created_at = created;
+            this.complaint_id = complaint_id;
+            this.notification_id = notification_id;
+            this.title = title;
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
     }
 
 
     public static ArrayList<Data_Model_Notifications> fromJson(JSONArray jsonObjects) {
 
-        Log.i("hagga", "FromJSONcalled" );
         ArrayList<Data_Model_Notifications> gradesData = new ArrayList<>();
         for (int i = 0; i < jsonObjects.length(); i++) {
             try {
@@ -55,7 +72,7 @@ public class Data_Model_Notifications {
                 e.printStackTrace();
             }
         }
-        Log.i("hagga", "FromJSONFinished");
+
 
         return gradesData;
     }

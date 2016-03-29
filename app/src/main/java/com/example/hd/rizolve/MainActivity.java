@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-    private JSONObject userComplains,hostelComplains,instiComplains;
-    private JSONArray notificationData;
+    private JSONObject userComplains,hostelComplains,instiComplains,notificationData;
 
     public JSONObject getUserComplains(){
         return userComplains;
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     public JSONObject getInstiComplains(){
         return instiComplains;
     }
-    public JSONArray getNotificationData(){
+    public JSONObject getNotificationData(){
         return notificationData;
     }
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             userComplains = new JSONObject(intent.getStringExtra("UserComplains"));
             hostelComplains = new JSONObject(intent.getStringExtra("HostelComplains"));
             instiComplains = new JSONObject(intent.getStringExtra("InstiComplains"));
-            notificationData = new JSONArray(intent.getStringExtra("NotificationList"));
+            notificationData = new JSONObject(intent.getStringExtra("NotificationList"));
         }
         catch (JSONException e){
 
@@ -82,14 +82,6 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
     }
 

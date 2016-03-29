@@ -38,14 +38,13 @@ import java.net.CookiePolicy;
 public class Login extends AppCompatActivity {
     static String serverAddress;
     static RequestQueue myQueue;
-    JSONArray notification_array;
     String first_name;
     String last_name;
     String hostel;
     String email;
     int usertype;
     static boolean proceed;
-    JSONObject userComplains,hostelComplains,instiComplains;
+    JSONObject userComplains,hostelComplains,instiComplains,notificationData;
 
     public static final String MyPREFERENCES = "MyPrefs";
     SharedPreferences sharedpreferences;
@@ -67,7 +66,7 @@ public class Login extends AppCompatActivity {
         manager.setCookiePolicy(CookiePolicy.ACCEPT_ORIGINAL_SERVER);
 
         global = ((Globals) this.getApplication());
-        global.setServerAddress("http://192.168.43.221:8000/complaint1");
+        global.setServerAddress("http://192.168.0.111:8000/complaint1");
 
         serverAddress = global.getServerAddress();
 
@@ -181,41 +180,12 @@ public class Login extends AppCompatActivity {
             }
         }) ;
 
-
-
         final JsonObjectRequest request1 = new JsonObjectRequest(Request.Method.GET,url_notification,null, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
-
-                try {
-
-                    notification_array = new JSONArray();
-                    JSONArray notify = response.getJSONArray("notifications");
-
-                    for (int i=0;i<notify.length();i++){
-
-                        JSONObject object = new JSONObject();
-                        String created = notify.getJSONObject(i).getString("created_at");
-                        String description = notify.getJSONObject(i).getString("description");
-                        String complaint_id = notify.getJSONObject(i).getString("complaint_id");
-                        String notification_id = notify.getJSONObject(i).getString("id");
-                        Document doc = Jsoup.parse(description);
-                        org.jsoup.select.Elements links = doc.select("a");
-                        String name;
-                        name = links.get(0).text();
-                        object.put("created_at", created);
-                        object.put("complaint_id",complaint_id);
-                        object.put("name", name);
-                        object.put("notification_id",notification_id);
-                        notification_array.put(object);
-                    }
-                    myQueue.add(request2);
-                }
-                catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
+                notificationData = response;
+                myQueue.add(request2);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -280,7 +250,7 @@ public class Login extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("FIRST_NAME", first_name);
         bundle.putString("LAST_NAME", last_name);
-        bundle.putString("NotificationList", notification_array.toString());
+        bundle.putString("NotificationList", notificationData.toString());
         bundle.putString("UserComplains",userComplains.toString());
         bundle.putString("HostelComplains",hostelComplains.toString());
         bundle.putString("InstiComplains",instiComplains.toString());
