@@ -3,6 +3,7 @@ package com.example.hd.rizolve;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,6 +20,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
+import com.android.volley.RequestQueue;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,17 +33,21 @@ import java.util.ArrayList;
  */
 public class Adapter_Complaints extends RecyclerView.Adapter<Adapter_Complaints.ViewHolder>{
 
+
     static String serverAddress;
     static RequestQueue myQueue;
     final int duration = Toast.LENGTH_LONG;
-
     Globals global;
     Context context;
+    //we pass the complaints_data to the next activity
+    JSONObject complaint_details;
+    Activity parent;
 
     private ArrayList<Data_Model_Complaints> ComplaintsData ;
 
 
     public Adapter_Complaints(JSONObject ndata,Activity a,Context c) {
+
         JSONArray object1 = null;
         JSONArray object2 = null;
         try {
@@ -53,12 +60,12 @@ public class Adapter_Complaints extends RecyclerView.Adapter<Adapter_Complaints.
         ComplaintsData = Data_Model_Complaints.fromJson(object1, object2);
 
         context = c;
+        parent = a;
         global = ((Globals) a.getApplication());
         serverAddress = global.getServerAddress();
         myQueue = global.getVolleyQueue();
 
-        //Log.i("hagga1",ndata.toString());
-        //Log.i("hagga1",ComplaintsData.get(1).date);
+
     }
 
 
@@ -80,14 +87,7 @@ public class Adapter_Complaints extends RecyclerView.Adapter<Adapter_Complaints.
             upvote = (Button) v.findViewById(R.id.complain_upvote);
             downvote = (Button) v.findViewById(R.id.complain_downvote);
             cardView = (CardView) v.findViewById(R.id.complaint_card_view);
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.i("hagga4","here1");
-                    Intent intent = new Intent(v.getContext(),ComplaintsActivity.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
+
         }
     }
 
@@ -161,6 +161,46 @@ public class Adapter_Complaints extends RecyclerView.Adapter<Adapter_Complaints.
 
                     @Override
                     public void onResponse(JSONObject response) {
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast toast = Toast.makeText(context, "Network Error", duration);
+                        toast.show();
+                    }
+                }) ;
+                //Add the first request in the queue
+                myQueue.add(request0);
+            }
+        });
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+
+
+                String url_complaints_detail = serverAddress.concat("/complaint/complaint_data.json?complaint_id=").
+                        concat(String.valueOf(complaint_id));
+
+                JsonObjectRequest request0 = new JsonObjectRequest(Request.Method.GET,url_complaints_detail,
+                        null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        complaint_details = response;
+                        Intent intent = new Intent(v.getContext(),ComplaintsActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("complaint_details", complaint_details.toString());
+                        bundle.putString("title",item.title);
+                        bundle.putString("postedBy",item.name);
+                        bundle.putString("created_at",item.date);
+                        bundle.putString("description",item.description);
+                        bundle.putString("upvote",String.valueOf(item.up_vote));
+                        bundle.putString("downvote", String.valueOf(item.down_vote));
+                        bundle.putString("id", String.valueOf(item.complaint_id));
+                        intent.putExtras(bundle);
+                        v.getContext().startActivity(intent);
 
                     }
                 }, new Response.ErrorListener() {

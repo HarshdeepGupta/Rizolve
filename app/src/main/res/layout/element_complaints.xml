@@ -81,14 +81,7 @@
                 android:layout_toEndOf="@+id/complain_upvote"
                 android:clickable="true"/>
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/complain_add_comment"
-                android:layout_below="@+id/complaint_description"
-                android:layout_alignParentEnd="true"
-                android:layout_toEndOf="@+id/complain_downvote"
-                android:hint="Your comment here" />
+
 
 
         </RelativeLayout>
