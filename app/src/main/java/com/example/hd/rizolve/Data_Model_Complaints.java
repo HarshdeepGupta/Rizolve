@@ -60,7 +60,7 @@ public class Data_Model_Complaints {
             String name1 = object2.getString("first_name");
             String name = name1.concat(" ").concat(object2.getString("last_name"));;
             String email = object2.getString("email");;
-            this.title = "Title";
+            this.title = object1.getString("title");
             this.complaint_id = complaint_id1;
             this.isresolved = isresolved1;
             this.faculty_visibility = faculty_visibility1;
@@ -88,7 +88,8 @@ public class Data_Model_Complaints {
 
         for (int i = 0; i <object1.length(); i++) {
             try {
-                gradesData.add(new Data_Model_Complaints(object1.getJSONObject(i),object2.getJSONObject(i)));
+                gradesData.add(new Data_Model_Complaints(object1.getJSONObject(object1.length()-i-1),
+                        object2.getJSONObject(object1.length()-i-1)));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

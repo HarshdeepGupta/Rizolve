@@ -37,9 +37,10 @@
                 android:value="com.example.hd.rizolve.MainActivity" />
         </activity>
         <activity
-            android:name=".resolve"
-            android:label="Resolve Complaint"
+            android:name=".resolveActivity"
+            android:label="Resolve a Complaint"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".add_complaint"
             android:label="New Complaint"

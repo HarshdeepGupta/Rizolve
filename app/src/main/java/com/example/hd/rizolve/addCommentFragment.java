@@ -1,9 +1,5 @@
 package com.example.hd.rizolve;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,18 +10,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-public class addComment extends android.support.v4.app.DialogFragment implements TextView.OnEditorActionListener {
+public class addCommentFragment extends android.support.v4.app.DialogFragment implements TextView.OnEditorActionListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private EditText mEditText;
 
-    public addComment() {
+    public addCommentFragment() {
         // Required empty public constructor
     }
 
     // TODO: Rename and change types and number of parameters
-    public static addComment newInstance() {
-        addComment fragment = new addComment();
+    public static addCommentFragment newInstance() {
+        addCommentFragment fragment = new addCommentFragment();
         return fragment;
     }
 
