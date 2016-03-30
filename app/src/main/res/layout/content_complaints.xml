@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.hd.rizolve.ComplaintsActivity"
     tools:showIn="@layout/activity_complaints">
@@ -88,14 +89,13 @@
                 android:id="@+id/comment_recycler_view"
                 android:scrollbars="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_below="@+id/complain_detail_upvote"
                 android:layout_gravity="center_horizontal|top" />
-
-
-
         </RelativeLayout>
     </android.support.v7.widget.CardView>
+
 
 
 </android.support.v4.widget.NestedScrollView>
