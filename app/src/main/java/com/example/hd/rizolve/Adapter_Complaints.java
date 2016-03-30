@@ -122,19 +122,50 @@ public class Adapter_Complaints extends RecyclerView.Adapter<Adapter_Complaints.
         holder.upvote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                item.up_vote = item.up_vote+1;
-                String upvote = String.valueOf(Integer.parseInt(holder.upvote.getText().toString())+1);
-                Log.i("hagga3",upvote);
-                holder.upvote.setText(upvote);
-                holder.upvote.setClickable(false);
 
-                String url_upvote = serverAddress.concat("/complaint/up_vote.json?complaint_id=").concat(String.valueOf(complaint_id));
-
-                JsonObjectRequest request0 = new JsonObjectRequest(Request.Method.GET,url_upvote,null, new Response.Listener<JSONObject>() {
+                String url_check_upvote = serverAddress.concat("/complaint/check_if_vote.json?complaint_id=").concat(String.valueOf(complaint_id));
+                JsonObjectRequest request1 = new JsonObjectRequest(Request.Method.GET,url_check_upvote,null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.i("hagga3","response");
+                        boolean if_already_checked=false;
+                        try {
+                            if_already_checked = response.getBoolean("success");
+                        }catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        if(if_already_checked==false){
+                            item.up_vote = item.up_vote+1;
+                            String upvote = String.valueOf(Integer.parseInt(holder.upvote.getText().toString())+1);
+                            Log.i("hagga3", upvote);
+                            holder.upvote.setText(upvote);
+                            //holder.upvote.setClickable(false);
+
+                            String url_upvote = serverAddress.concat("/complaint/up_vote.json?complaint_id=").concat(String.valueOf(complaint_id));
+
+                            JsonObjectRequest request0 = new JsonObjectRequest(Request.Method.GET,url_upvote,null, new Response.Listener<JSONObject>() {
+
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    Log.i("hagga3","response");
+                                }
+                            }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast toast = Toast.makeText(context, "Network Error", duration);
+                                    toast.show();
+                                }
+                            }) ;
+                            //Add the first request in the queue
+                            myQueue.add(request0);
+                        }
+
+                        else if(if_already_checked==true){
+
+                        }
+
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -143,24 +174,55 @@ public class Adapter_Complaints extends RecyclerView.Adapter<Adapter_Complaints.
                         toast.show();
                     }
                 }) ;
-                //Add the first request in the queue
-                myQueue.add(request0);
+                myQueue.add(request1);
+
             }
         });
 
         holder.downvote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                item.down_vote = item.down_vote+1;
-                String downvote = String.valueOf(Integer.parseInt(holder.downvote.getText().toString()) + 1);
-                holder.downvote.setText(downvote);
-                holder.downvote.setClickable(false);
-                String url_downvote = serverAddress.concat("/complaint/down_vote.json?complaint_id=").concat(String.valueOf(complaint_id));
-
-                JsonObjectRequest request0 = new JsonObjectRequest(Request.Method.GET,url_downvote,null, new Response.Listener<JSONObject>() {
+                String url_check_upvote = serverAddress.concat("/complaint/check_if_vote.json?complaint_id=").concat(String.valueOf(complaint_id));
+                JsonObjectRequest request1 = new JsonObjectRequest(Request.Method.GET,url_check_upvote,null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
+
+                        boolean if_already_checked=false;
+                        try {
+                            if_already_checked = response.getBoolean("success");
+                            Log.i("haggaxx",String.valueOf(if_already_checked));
+                        }catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        if(if_already_checked==false){
+                            item.down_vote = item.down_vote+1;
+                            String downvote = String.valueOf(Integer.parseInt(holder.downvote.getText().toString()) + 1);
+                            holder.downvote.setText(downvote);
+                            //holder.downvote.setClickable(false);
+                            String url_downvote = serverAddress.concat("/complaint/down_vote.json?complaint_id=").concat(String.valueOf(complaint_id));
+
+                            JsonObjectRequest request0 = new JsonObjectRequest(Request.Method.GET,url_downvote,null, new Response.Listener<JSONObject>() {
+
+                                @Override
+                                public void onResponse(JSONObject response) {
+
+                                }
+                            }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast toast = Toast.makeText(context, "Network Error", duration);
+                                    toast.show();
+                                }
+                            }) ;
+                            //Add the first request in the queue
+                            myQueue.add(request0);
+                        }
+
+                        else if(if_already_checked==true){
+
+                        }
 
                     }
                 }, new Response.ErrorListener() {
@@ -170,8 +232,8 @@ public class Adapter_Complaints extends RecyclerView.Adapter<Adapter_Complaints.
                         toast.show();
                     }
                 }) ;
-                //Add the first request in the queue
-                myQueue.add(request0);
+                myQueue.add(request1);
+
             }
         });
 
@@ -179,7 +241,7 @@ public class Adapter_Complaints extends RecyclerView.Adapter<Adapter_Complaints.
             @Override
             public void onClick(final View v) {
 
-
+                Log.i("haggaxx","getting here1");
                 String url_complaints_detail = serverAddress.concat("/complaint/complaint_data.json?complaint_id=").
                         concat(String.valueOf(complaint_id));
 
@@ -211,6 +273,7 @@ public class Adapter_Complaints extends RecyclerView.Adapter<Adapter_Complaints.
                     }
                 }) ;
                 //Add the first request in the queue
+                Log.i("haggaxx","getting here2");
                 myQueue.add(request0);
             }
         });

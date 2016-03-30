@@ -26,7 +26,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ComplaintsActivity"
             android:label="@string/title_activity_complaints"
@@ -36,6 +36,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.hd.rizolve.MainActivity" />
         </activity>
+        <activity
+            android:name=".resolve"
+            android:label="@string/title_activity_resolve"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".add_complaint"
+            android:label="@string/title_activity_add_complaint"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
