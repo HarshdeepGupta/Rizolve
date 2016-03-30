@@ -12,8 +12,8 @@
         android:padding="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="30dp"
         card_view:cardCornerRadius="4dp"
         android:foreground="?android:attr/selectableItemBackground">
 
@@ -37,7 +37,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="At:"
                 android:padding="5dp"
-                android:id="@+id/comment_created_at"
+                android:id="@+id/comment_time_elapsed"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true" />
 
@@ -48,7 +48,7 @@
                 android:text="Description"
                 android:padding="5dp"
                 android:id="@+id/comment_description"
-                android:layout_below="@+id/comment_created_at"
+                android:layout_below="@+id/comment_time_elapsed"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true" />
 

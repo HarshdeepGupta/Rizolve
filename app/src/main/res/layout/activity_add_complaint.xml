@@ -98,20 +98,15 @@
             />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/decide_insti"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="400dp"
-        android:visibility="invisible"
-        >
+
 
     <LinearLayout
+        android:id="@+id/decide_insti1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_marginTop="400dp"
+        android:visibility="invisible"
         >
 
         <RadioButton
@@ -131,10 +126,12 @@
             android:text="IRD"/>
     </LinearLayout>
         <LinearLayout
+            android:id="@+id/decide_insti2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_marginTop="400dp"
+            android:layout_marginTop="420dp"
+            android:visibility="invisible"
             >
         <RadioButton
             android:id="@+id/dean4"
@@ -153,7 +150,7 @@
             android:text="Alumni Affairs"/>
 
         </LinearLayout>
-    </LinearLayout>
+
 
 
 

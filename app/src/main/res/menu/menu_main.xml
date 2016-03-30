@@ -6,6 +6,7 @@
         android:id="@+id/Logout"
         android:orderInCategory="100"
         android:title="@string/logout"
+        android:icon="@drawable/logout"
         android:onClick="logout_method"
         app:showAsAction="never" />
 
@@ -21,5 +22,6 @@
         android:orderInCategory="100"
         android:title="Add Complaint"
         android:onClick="add_complaint"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        />
 </menu>

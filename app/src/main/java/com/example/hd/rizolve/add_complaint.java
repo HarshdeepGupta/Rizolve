@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -60,11 +61,13 @@ public class add_complaint extends AppCompatActivity {
         global = ((Globals) this.getApplication());
         serverAddress = global.getServerAddress();
         myQueue = global.getVolleyQueue();
+        context = this;
 
         title1 = (EditText) findViewById(R.id.complaint_title);
         description1 = (EditText) findViewById(R.id.complaint_description);
         final LinearLayout layout1 = (LinearLayout) findViewById(R.id.decide_individual);
-        final LinearLayout layout2 = (LinearLayout) findViewById(R.id.decide_insti);
+        final LinearLayout layout2 = (LinearLayout) findViewById(R.id.decide_insti1);
+        final LinearLayout layout3 = (LinearLayout) findViewById(R.id.decide_insti2);
         final RadioButton button1 = (RadioButton) findViewById(R.id.student_radio_button);
         final RadioButton button2 = (RadioButton) findViewById(R.id.faculty_radio_button);
         final RadioButton button3 = (RadioButton) findViewById(R.id.individual_radio_button);
@@ -78,6 +81,15 @@ public class add_complaint extends AppCompatActivity {
         final RadioButton button11 = (RadioButton) findViewById(R.id.dean4);
         final RadioButton button12 = (RadioButton) findViewById(R.id.dean5);
         final RadioButton button13 = (RadioButton) findViewById(R.id.dean6);
+        final Button post_button = (Button) findViewById(R.id.complaint_post);
+
+        /*
+        if((button3.isChecked()==false && button4.isChecked()==false&& button5.isChecked()==false)||(title1.getText().toString().length()==0 ||description1.getText().toString().length()==0)||(button1.isChecked()==false && button2.isChecked()==false)){
+
+            post_button.setClickable(false);
+
+        }
+        */
 
 
 
@@ -88,6 +100,7 @@ public class add_complaint extends AppCompatActivity {
                 layout1.setVisibility(View.VISIBLE);
                 complaint_type = 0;
                 layout2.setVisibility(View.INVISIBLE);
+                layout3.setVisibility(View.INVISIBLE);
 
             }
         };
@@ -95,9 +108,9 @@ public class add_complaint extends AppCompatActivity {
             public void onClick(View v) {
                 button3.setChecked(false);
                 button5.setChecked(false);
-                layout1.setVisibility(View.VISIBLE);
                 layout1.setVisibility(View.INVISIBLE);
                 layout2.setVisibility(View.INVISIBLE);
+                layout3.setVisibility(View.INVISIBLE);
                 complaint_type = 1;
                 resolve_category = 0;
             }
@@ -108,6 +121,7 @@ public class add_complaint extends AppCompatActivity {
                 button4.setChecked(false);
                 layout1.setVisibility(View.INVISIBLE);
                 layout2.setVisibility(View.VISIBLE);
+                layout3.setVisibility(View.VISIBLE);
                 complaint_type = 2;
             }
         };
@@ -224,10 +238,9 @@ public class add_complaint extends AppCompatActivity {
     public void post_complaint(final View view){
 
 
-        String title = title1.getText().toString();
-        String description = description1.getText().toString();
-        Log.i("haggax","1");
-        String url_resolving = serverAddress.concat("/complaint/post_complaint.json?/complaint_type=")
+        String title = title1.getText().toString().replaceAll("\\s+", "%20");
+        String description = description1.getText().toString().replaceAll("\\s+","%20");
+        String url_resolving = serverAddress.concat("/complaint/post_complaint.json?complaint_type=")
                 .concat(String.valueOf(complaint_type)).concat("&complaint=")
                 .concat(description).concat("&visibilityStudent=").concat(String.valueOf(visibilityStudent))
                 .concat("&visibilityProf=").concat(String.valueOf(visibilityProf))
@@ -239,10 +252,10 @@ public class add_complaint extends AppCompatActivity {
 
             @Override
             public void onResponse(JSONObject response) {
-                Log.i("hagga","2");
-                Snackbar.make(view, "Complaint has been Registered", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                Log.i("hagga", "3");
+
+                Toast toast = Toast.makeText(context, "Complaint is registered", duration);
+                toast.show();
+
                 finish();
             }
         }, new Response.ErrorListener() {
@@ -252,9 +265,9 @@ public class add_complaint extends AppCompatActivity {
                 toast.show();
             }
         }) ;
-        Log.i("hagga","4");
+
         myQueue.add(request1);
-        Log.i("hagga", "5");
+
     }
 
 }

@@ -33,7 +33,9 @@ public class Adapter_Comment extends RecyclerView.Adapter<Adapter_Comment.ViewHo
             super(v);
             postedBy = (TextView) v.findViewById(R.id.comment_posted_by);
             description = (TextView) v.findViewById(R.id.comment_description);
-            time_elapsed = (TextView) v.findViewById(R.id.comment_created_at);
+
+            time_elapsed = (TextView) v.findViewById(R.id.comment_time_elapsed);
+
         }
     }
 
