@@ -27,19 +27,18 @@
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:textSize="20sp"
-                android:textAlignment="center"
                 android:padding="5dp"
                 android:text="Title"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/title"
                 android:textColor="#009CEF"/>
 
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="By:"
-                android:textColor="#8b0000"
                 android:padding="5dp"
                 android:id="@+id/complaint_posted_by"
                 android:layout_below="@+id/complaint_title"
@@ -48,9 +47,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="At:"
-                android:textColor="#8b0000"
                 android:padding="5dp"
                 android:id="@+id/complaint_created_at"
                 android:layout_below="@+id/complaint_title"
@@ -59,7 +57,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Description"
                 android:padding="5dp"
                 android:id="@+id/complaint_description"
@@ -67,13 +65,12 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true" />
 
-            <ImageButton
+            <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/complain_upvote"
-                android:src="@drawable/up"
-                android:background="@android:color/transparent"
+                android:background="@drawable/up"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="10dp"
@@ -81,16 +78,13 @@
                 android:layout_alignParentStart="true"
                 android:clickable="true"/>
 
-            <ImageButton
+            <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/down"
                 android:textColor="#ffffff"
-                android:background="@android:color/transparent"
                 android:id="@+id/complain_downvote"
-                android:layout_marginLeft="20dp"
-                android:textAlignment="center"
+                android:background="@drawable/down"
                 android:layout_below="@+id/complaint_description"
                 android:layout_toEndOf="@+id/complain_upvote"
                 android:clickable="true"

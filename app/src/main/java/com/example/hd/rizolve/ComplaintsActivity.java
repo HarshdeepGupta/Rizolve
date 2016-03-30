@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -63,6 +64,9 @@ public class ComplaintsActivity extends AppCompatActivity {
         }
 
 
+
+
+
         setContentView(R.layout.activity_complaints);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -117,6 +121,16 @@ public class ComplaintsActivity extends AppCompatActivity {
         final int duration = Toast.LENGTH_LONG;
 
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_add_comment);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Click action
+                showEditDialog();
+            }
+        });
+
+
         upvote_.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,7 +169,7 @@ public class ComplaintsActivity extends AppCompatActivity {
                 downvote_.setClickable(false);
                 String url_downvote = serverAddress.concat("/complaint/down_vote.json?complaint_id=").concat(String.valueOf(complaint_id));
 
-                JsonObjectRequest request0 = new JsonObjectRequest(Request.Method.GET,url_downvote,null, new Response.Listener<JSONObject>() {
+                JsonObjectRequest request0 = new JsonObjectRequest(Request.Method.GET, url_downvote, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
@@ -167,12 +181,54 @@ public class ComplaintsActivity extends AppCompatActivity {
                         Toast toast = Toast.makeText(getApplicationContext(), "Network Error", duration);
                         toast.show();
                     }
-                }) ;
+                });
                 //Add the first request in the queue
                 myQueue.add(request0);
             }
         });
 
 
+
+
     }
+
+    private void showEditDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        addComment dialog = new addComment();
+        dialog.show(fm, "fragment_edit_name");
+    }
+
+    public void onFinishEditDialog(String inputText) {
+
+        //TODO EDIT the send complaints url here
+        //TODO ALso add the complaint in the view
+        String url_add_comment = serverAddress.concat("/complaint/post_comment.json?complaint_id=").
+                concat(String.valueOf(id)).concat("&comment=").concat(inputText);
+        url_add_comment = url_add_comment.replaceAll("\\s+","%20");
+
+        JsonObjectRequest request0 = new JsonObjectRequest(Request.Method.GET,url_add_comment,null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.i("hagga3","response");
+                complaintDetails = response;
+                mAdapter = new Adapter_Comment(complaintDetails);
+                mAdapter.notifyDataSetChanged();
+//                mAdapter.
+                Toast toast = Toast.makeText(getApplicationContext(), "UPDATE THIS METHOD", Toast.LENGTH_LONG);
+                toast.show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast toast = Toast.makeText(getApplicationContext(), "Network Error", Toast.LENGTH_LONG);
+                toast.show();
+            }
+        }) ;
+        //Add the first request in the queue
+        myQueue.add(request0);
+    }
+
+
+
 }
