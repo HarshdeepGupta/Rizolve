@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
 
 
     <!-- A CardView that contains a TextView -->
@@ -32,7 +34,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textAlignment="center"
                 android:background="#c6e2ff"
-                android:textColor="#009CEF" />
+                android:textColor="#f6546a" />
 
 
 
@@ -41,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="By:"
-                android:textColor="#8b0000"
+                android:textColor="#666666"
                 android:padding="5dp"
                 android:id="@+id/notification_posted_by"
                 android:layout_below="@+id/notification_title"
@@ -53,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="At:"
-                android:textColor="#8b0000"
+                android:textColor="#666666"
                 android:padding="5dp"
                 android:id="@+id/notification_created_at"
                 android:layout_below="@+id/notification_title"
@@ -75,11 +77,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Seen"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="20dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#8b0000"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@+id/notification_description"
-                android:layout_marginBottom="20dp"/>
+                android:layout_below="@+id/notification_description"/>
 
 
         </RelativeLayout>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
 
 
     <!-- A CardView that contains a TextView -->
@@ -32,17 +34,17 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textAlignment="center"
                 android:background="#c6e2ff"
-                android:textColor="#009CEF" />
+                android:textColor="#f6546a" />
             <CheckBox
                 android:id="@+id/is_seen_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Resolve"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#8b0000"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/complaint_description"
-                android:layout_marginBottom="20dp"
+                android:padding="20dp"
                 />
 
             <TextView
@@ -50,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="By:"
-                android:textColor="#8b0000"
+                android:textColor="#666666"
                 android:padding="5dp"
                 android:layout_below="@+id/complaint_title"
                 android:layout_alignParentEnd="true"
@@ -62,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="At:"
-                android:textColor="#8b0000"
+                android:textColor="#666666"
                 android:padding="5dp"
                 android:layout_below="@+id/complaint_title"
                 android:layout_alignParentStart="true" />
@@ -86,9 +88,9 @@
                 style="?android:attr/buttonStyleSmall"
                 android:id="@+id/complain_upvote"
                 android:layout_below="@+id/complaint_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/up"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/upvote"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
                 android:layout_marginTop="10dp"
@@ -102,11 +104,11 @@
                 android:id="@+id/complain_downvote"
                 android:layout_below="@+id/complaint_description"
                 android:layout_toEndOf="@+id/complain_upvote"
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:clickable="true"
-                android:background="@drawable/down"
+                android:background="@drawable/downvote"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="20dp"
                 android:textAlignment="center"

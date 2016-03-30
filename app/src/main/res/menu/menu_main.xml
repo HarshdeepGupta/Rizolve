@@ -17,7 +17,7 @@
         android:orderInCategory="100"
         android:title="Add Complaint"
         android:onClick="add_complaint"
-        android:icon="@drawable/add"
+        android:icon="@drawable/add_comment"
         app:showAsAction="ifRoom"
         />
     <item

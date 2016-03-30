@@ -39,7 +39,7 @@
         android:text="Add a new Complaint"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:background="@drawable/title"
-        android:textColor="#009CEF"
+        android:textColor="#f6546a"
         android:layout_marginTop="70dp"/>
 
     <LinearLayout
@@ -66,16 +66,19 @@
         android:id="@+id/individual_radio_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:text="Self"/>
         <RadioButton
             android:id="@+id/hostel_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:text="Hostel"/>
         <RadioButton
             android:id="@+id/insti_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:text="Institute"/>
     </LinearLayout>
 
@@ -88,6 +91,7 @@
         android:layout_below="@+id/add_complaint_title"
         android:layout_marginTop="80dp"
         android:hint="Complaint Title"
+        android:textSize="20sp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>
 
@@ -95,6 +99,7 @@
         android:id="@+id/complaint_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:layout_below="@+id/complaint_title"
         android:layout_marginTop="15dp"
         android:hint="Complaint Description"
@@ -124,12 +129,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:textSize="20sp"
             android:text="Students" />
         <RadioButton
             android:id="@+id/faculty_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:textSize="20sp"
             android:text="Faculty"/>
     </LinearLayout>
 
@@ -159,12 +166,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:textSize="20sp"
             android:text="Mess"/>
         <RadioButton
             android:id="@+id/main_individual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Maintainence"
+            android:textSize="20sp"
             android:layout_marginLeft="30dp"
             />
     </LinearLayout>
@@ -195,6 +204,7 @@
             android:id="@+id/dean1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:text="Academics"
             android:layout_toEndOf="@+id/dean_type"/>
         <RadioButton

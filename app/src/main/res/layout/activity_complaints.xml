@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +9,19 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.hd.rizolve.complain_detailsActivity">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -33,17 +48,21 @@
                 android:textAlignment="center"
                 android:padding="5dp"
                 android:text="Title"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:background="#c6e2ff"
-                android:textColor="#009CEF" />
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="#f6546a" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="By:"
                 android:padding="5dp"
-                android:textColor="#8b0000"
+                android:layout_marginRight="10dp"
+                android:textColor="#666666"
                 android:id="@+id/complain_detail_posted_by"
                 android:layout_below="@+id/complain_detail_title"
                 android:layout_alignParentEnd="true" />
@@ -51,10 +70,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="At:"
                 android:padding="5dp"
-                android:textColor="#8b0000"
+                android:layout_marginLeft="10dp"
+                android:textColor="#666666"
                 android:id="@+id/complain_detail_created_at"
                 android:layout_below="@+id/complain_detail_title"
                 android:layout_alignParentStart="true" />
@@ -62,9 +82,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Description"
                 android:padding="5dp"
+                android:layout_marginLeft="10dp"
                 android:id="@+id/complain_detail_description"
                 android:layout_below="@+id/complain_detail_created_at"
                 android:layout_alignParentStart="true"
@@ -72,28 +93,28 @@
 
             <Button
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:id="@+id/complain_detail_upvote"
                 android:layout_below="@+id/complain_detail_description"
-                android:background="@drawable/up"
+                android:background="@drawable/upvote"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_alignParentStart="true"
                 android:clickable="true"/>
 
             <Button
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:id="@+id/complain_detail_downvote"
                 android:layout_below="@+id/complain_detail_description"
                 android:layout_toEndOf="@+id/complain_detail_upvote"
                 android:clickable="true"
-                android:background="@drawable/down"
+                android:background="@drawable/downvote"
                 android:textColor="#ffffff"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="30dp"
                 android:textAlignment="center"
                 android:layout_marginBottom="20dp"/>
 
@@ -102,6 +123,7 @@
                 android:scrollbars="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
                 android:layout_below="@+id/complain_detail_upvote"
                 android:layout_gravity="center_horizontal|top" />
 

@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Login"
-            android:label="@string/app_name"
+            android:label="Rizolve"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,11 +25,11 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main"
+            android:label="Complaint System"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ComplaintsActivity"
-            android:label="@string/title_activity_complaints"
+            android:label="Complaint Details"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -38,11 +38,11 @@
         </activity>
         <activity
             android:name=".resolve"
-            android:label="@string/title_activity_resolve"
+            android:label="Resolve Complaint"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".add_complaint"
-            android:label="@string/title_activity_add_complaint"
+            android:label="New Complaint"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
