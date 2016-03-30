@@ -98,6 +98,7 @@
                 android:id="@+id/complain_detail_upvote"
                 android:layout_below="@+id/complain_detail_description"
                 android:background="@drawable/upvote"
+                android:layout_marginTop="10dp"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="20dp"
@@ -115,6 +116,7 @@
                 android:background="@drawable/downvote"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
                 android:textAlignment="center"
                 android:layout_marginBottom="20dp"/>
 
