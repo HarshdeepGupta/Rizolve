@@ -3,6 +3,7 @@ package com.example.hd.rizolve;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -79,6 +81,7 @@ public class Adapter_Complaints extends RecyclerView.Adapter<Adapter_Complaints.
         public TextView createdAt;
         public Button upvote;
         public Button downvote;
+        public ImageView resolve_photo;
         public ViewHolder(final View v) {
             super(v);
             title = (TextView) v.findViewById(R.id.complaint_title);
@@ -88,7 +91,7 @@ public class Adapter_Complaints extends RecyclerView.Adapter<Adapter_Complaints.
             upvote = (Button) v.findViewById(R.id.complain_upvote);
             downvote = (Button) v.findViewById(R.id.complain_downvote);
             cardView = (CardView) v.findViewById(R.id.complaint_card_view);
-
+            resolve_photo = (ImageView) v.findViewById(R.id.resolve_photo);
         }
     }
 
@@ -119,6 +122,15 @@ public class Adapter_Complaints extends RecyclerView.Adapter<Adapter_Complaints.
         holder.description.setText(item.description);
         holder.upvote.setText(c);
         holder.downvote.setText(d);
+        int is_resolved = item.isresolved;
+        if(is_resolved==1) {
+            Log.i("haggax1","1");
+            holder.resolve_photo.setImageResource(R.drawable.right);
+        }
+        if(is_resolved==0) {
+            Log.i("haggax1","0");
+            holder.resolve_photo.setImageResource(R.drawable.wrong);
+        }
         final int complaint_id = item.complaint_id;
         holder.upvote.setOnClickListener(new View.OnClickListener() {
             @Override
