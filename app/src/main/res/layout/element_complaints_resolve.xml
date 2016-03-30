@@ -28,78 +28,89 @@
                 android:gravity="center_vertical"
                 android:textSize="20sp"
                 android:padding="5dp"
-                android:text="Title" />
+                android:text="Title"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAlignment="center"
+                android:background="#c6e2ff"
+                android:textColor="#009CEF" />
             <CheckBox
                 android:id="@+id/is_seen_box"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="Seen"
-                android:layout_above="@+id/complaint_posted_by"
-                android:layout_toStartOf="@+id/complaint_posted_by"
-                android:layout_marginEnd="48dp" />
+                android:text="Resolve"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#8b0000"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/complaint_description"
+                android:layout_marginBottom="20dp"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="By:"
+                android:textColor="#8b0000"
                 android:padding="5dp"
-                android:id="@+id/complaint_posted_by"
                 android:layout_below="@+id/complaint_title"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:id="@+id/complaint_posted_by" />
 
             <TextView
+                android:id="@+id/complaint_created_at"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="At:"
+                android:textColor="#8b0000"
                 android:padding="5dp"
-                android:id="@+id/complaint_created_at"
                 android:layout_below="@+id/complaint_title"
                 android:layout_alignParentStart="true" />
 
 
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Description"
-                android:padding="5dp"
                 android:id="@+id/complaint_description"
                 android:layout_below="@+id/complaint_created_at"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+
+                />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Upvote"
                 android:id="@+id/complain_upvote"
                 android:layout_below="@+id/complaint_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/up"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_alignParentStart="true"
-                android:clickable="true"/>
+                android:clickable="true"
+                />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="DownVote"
                 android:id="@+id/complain_downvote"
                 android:layout_below="@+id/complaint_description"
                 android:layout_toEndOf="@+id/complain_upvote"
-                android:clickable="true"/>
-
-            <EditText
                 android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/complain_add_comment"
-                android:layout_below="@+id/complaint_description"
-                android:layout_alignParentEnd="true"
-                android:layout_toEndOf="@+id/complain_downvote"
-                android:hint="Your comment here" />
+                android:clickable="true"
+                android:background="@drawable/down"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="20dp"
+                android:textAlignment="center"
+                android:layout_marginBottom="20dp"/>
 
 
         </RelativeLayout>

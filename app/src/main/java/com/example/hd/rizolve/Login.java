@@ -67,7 +67,11 @@ public class Login extends AppCompatActivity {
         manager.setCookiePolicy(CookiePolicy.ACCEPT_ORIGINAL_SERVER);
 
         global = ((Globals) this.getApplication());
+<<<<<<< HEAD
         global.setServerAddress("http://192.168.43.221:8000/complaint1");
+=======
+        global.setServerAddress("http://192.168.122.1:8000/complaint1");
+>>>>>>> refs/remotes/origin/master
 
         serverAddress = global.getServerAddress();
 

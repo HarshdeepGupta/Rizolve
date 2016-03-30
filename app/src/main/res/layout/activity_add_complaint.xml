@@ -23,11 +23,45 @@
 
     <include layout="@layout/content_add_complaint" />
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/add_complaint_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:padding="5dp"
+        android:text="Add a new Complaint"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:background="@drawable/title"
+        android:textColor="#009CEF"
+        android:layout_marginTop="70dp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_marginTop="100dp">
+        android:id="@+id/complaint_type"
+        android:layout_below="@+id/add_complaint_title"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/add_complaint_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:padding="5dp"
+            android:text="Complaint Type :"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000000"/>
+
     <RadioButton
         android:id="@+id/individual_radio_button"
         android:layout_width="wrap_content"
@@ -45,35 +79,58 @@
             android:text="Institute"/>
     </LinearLayout>
 
+
+
     <EditText
         android:id="@+id/complaint_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:hint="Title"/>
+        android:layout_below="@+id/add_complaint_title"
+        android:layout_marginTop="80dp"
+        android:hint="Complaint Title"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
     <EditText
         android:id="@+id/complaint_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:hint="Description"/>
+        android:layout_below="@+id/complaint_title"
+        android:layout_marginTop="15dp"
+        android:hint="Complaint Description"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_marginTop="350dp">
+        android:layout_below="@+id/complaint_description"
+        android:layout_marginTop="30dp">
 
+        <TextView
+            android:id="@+id/visibility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:padding="5dp"
+            android:text="Post To :"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000000"/>
         <RadioButton
             android:id="@+id/student_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Visibile to Student"/>
+            android:layout_marginLeft="20dp"
+            android:text="Students" />
         <RadioButton
             android:id="@+id/faculty_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Visibility to Faculty"/>
+            android:layout_marginLeft="20dp"
+            android:text="Faculty"/>
     </LinearLayout>
 
 
@@ -85,22 +142,36 @@
         android:layout_marginTop="400dp"
         android:visibility="invisible">
 
+        <TextView
+            android:id="@+id/category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:padding="5dp"
+            android:text="Category :"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000000"/>
+
         <RadioButton
             android:id="@+id/mess_individual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="Mess"/>
         <RadioButton
             android:id="@+id/main_individual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Maintainence"
+            android:layout_marginLeft="30dp"
             />
     </LinearLayout>
 
 
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/decide_insti1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -109,50 +180,64 @@
         android:visibility="invisible"
         >
 
+        <TextView
+            android:id="@+id/dean_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:padding="5dp"
+            android:text="Dean :"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000000"/>
         <RadioButton
             android:id="@+id/dean1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Academics"/>
+            android:text="Academics"
+            android:layout_toEndOf="@+id/dean_type"/>
         <RadioButton
             android:id="@+id/dean2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Faculty"/>
+            android:text="Faculty"
+            android:layout_below="@+id/dean1"
+            android:layout_toEndOf="@id/dean_type"/>
         <RadioButton
             android:id="@+id/dean3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/dean1"
+            android:layout_marginLeft="20dp"
             android:text="IRD"/>
-    </LinearLayout>
-        <LinearLayout
-            android:id="@+id/decide_insti2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="420dp"
-            android:visibility="invisible"
-            >
+
+
         <RadioButton
             android:id="@+id/dean4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Student Affairs"/>
+            android:text="Student Affairs"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/dean1"
+            android:layout_toEndOf="@+id/dean1" />
         <RadioButton
             android:id="@+id/dean5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Infrastructure"/>
+            android:text="Infrastructure"
+            android:layout_below="@+id/dean2"
+            android:layout_toEndOf="@id/dean_type"/>
         <RadioButton
             android:id="@+id/dean6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Alumni Affairs"/>
+            android:text="Alumni Affairs"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/dean2"
+            android:layout_toEndOf="@+id/dean1"/>
 
-        </LinearLayout>
-
-
-
+        </RelativeLayout>
 
 
     <Button
@@ -163,7 +248,9 @@
         android:layout_marginTop="500dp"
         android:text="Post"
         android:onClick="post_complaint"
+        android:background="#c6e2ff"
+        android:layout_centerHorizontal="true"
         />
-
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
