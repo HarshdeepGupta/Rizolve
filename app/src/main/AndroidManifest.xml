@@ -37,7 +37,7 @@
                 android:value="com.example.hd.rizolve.MainActivity" />
         </activity>
         <activity
-            android:name=".resolve"
+            android:name=".resolveActivity"
             android:label="@string/title_activity_resolve"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

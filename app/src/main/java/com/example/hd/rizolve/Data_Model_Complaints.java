@@ -88,7 +88,8 @@ public class Data_Model_Complaints {
 
         for (int i = 0; i <object1.length(); i++) {
             try {
-                gradesData.add(new Data_Model_Complaints(object1.getJSONObject(i),object2.getJSONObject(i)));
+                gradesData.add(new Data_Model_Complaints(object1.getJSONObject(object1.length()-i-1),
+                        object2.getJSONObject(object1.length()-i-1)));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
