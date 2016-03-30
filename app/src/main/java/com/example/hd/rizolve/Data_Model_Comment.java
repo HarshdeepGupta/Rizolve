@@ -57,7 +57,9 @@ public class Data_Model_Comment {
         }
         for (int i = 0; i < object1.length(); i++) {
             try {
-                gradesData.add(new Data_Model_Comment(object1.getJSONObject(i),object2.getJSONObject(i),object3.getString(i)));
+                gradesData.add(new Data_Model_Comment(object1.getJSONObject(object1.length()-i-1),
+                        object2.getJSONObject(object1.length()-i-1),
+                        object3.getString(object1.length()-i-1)));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

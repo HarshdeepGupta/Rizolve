@@ -11,9 +11,13 @@
         <option name="gradleHome" value="$APPLICATION_HOME_DIR$/gradle/gradle-2.8" />
 <<<<<<< HEAD
         <option name="gradleJvm" value="1.8" />
+=======
+<<<<<<< HEAD
+        <option name="gradleJvm" value="1.8" />
 >>>>>>> refs/remotes/origin/master
 =======
         <option name="gradleJvm" value="1.7" />
+>>>>>>> refs/remotes/origin/master
 >>>>>>> refs/remotes/origin/master
         <option name="modules">
           <set>

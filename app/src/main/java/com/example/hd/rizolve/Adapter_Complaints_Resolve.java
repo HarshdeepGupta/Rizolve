@@ -1,13 +1,23 @@
 package com.example.hd.rizolve;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+
+import android.support.v7.app.AppCompatActivity;
+
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -38,6 +48,7 @@ public class Adapter_Complaints_Resolve extends RecyclerView.Adapter<Adapter_Com
     JSONObject complaint_details;
     Globals global;
     Context context;
+    Activity parent;
 
     private ArrayList<Data_Model_Complaints> ComplaintsData ;
 
@@ -58,6 +69,7 @@ public class Adapter_Complaints_Resolve extends RecyclerView.Adapter<Adapter_Com
         global = ((Globals) a.getApplication());
         serverAddress = global.getServerAddress();
         myQueue = global.getVolleyQueue();
+        parent = a;
 
         //Log.i("hagga1",ndata.toString());
         //Log.i("hagga1",ComplaintsData.get(1).date);
@@ -139,11 +151,16 @@ public class Adapter_Complaints_Resolve extends RecyclerView.Adapter<Adapter_Com
                 int complaint_id = item.complaint_id;
                 String url_upvote = serverAddress.concat("/complaint/complaint_resolve.json?complaint_id=").concat(String.valueOf(complaint_id));
 
+                FragmentManager fm = parent.getFragmentManager();
+                ResolveFragment dialogFragment = new ResolveFragment();
+                dialogFragment.show(fm, "conformation");
+
+
                 JsonObjectRequest request0 = new JsonObjectRequest(Request.Method.GET, url_upvote, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.i("hagga3", "response");
+
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -154,6 +171,9 @@ public class Adapter_Complaints_Resolve extends RecyclerView.Adapter<Adapter_Com
                 });
                 //Add the first request in the queue
                 myQueue.add(request0);
+
+
+
 
             }
 
@@ -166,7 +186,7 @@ public class Adapter_Complaints_Resolve extends RecyclerView.Adapter<Adapter_Com
             public void onClick(View v) {
                 item.up_vote = item.up_vote+1;
                 String upvote = String.valueOf(Integer.parseInt(holder.upvote.getText().toString())+1);
-                Log.i("hagga3",upvote);
+
                 holder.upvote.setText(upvote);
                 holder.upvote.setClickable(false);
 
@@ -176,7 +196,7 @@ public class Adapter_Complaints_Resolve extends RecyclerView.Adapter<Adapter_Com
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.i("hagga3","response");
+                  ;
                     }
                 }, new Response.ErrorListener() {
                     @Override

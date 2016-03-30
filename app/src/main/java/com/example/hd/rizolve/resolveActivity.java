@@ -16,7 +16,7 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class resolve extends AppCompatActivity {
+public class resolveActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -59,15 +59,16 @@ public class resolve extends AppCompatActivity {
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-
-
         mAdapter = new Adapter_Complaints_Resolve(resolveComplains,this,this);
         TextView text = (TextView) findViewById(R.id.no_resolve_view);
         if(mAdapter.getItemCount()==0){
             text.setVisibility(View.VISIBLE);
         }
+
         mRecyclerView.setAdapter(mAdapter);
 
 
     }
+
+
 }

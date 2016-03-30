@@ -3,10 +3,8 @@ package com.example.hd.rizolve;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -219,7 +217,7 @@ public class ComplaintsActivity extends AppCompatActivity {
 
     private void showEditDialog() {
         FragmentManager fm = getSupportFragmentManager();
-        addComment dialog = new addComment();
+        addCommentFragment dialog = new addCommentFragment();
         dialog.show(fm, "fragment_edit_comment");
     }
 
@@ -235,15 +233,11 @@ public class ComplaintsActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(JSONObject response) {
-                Log.i("hagga3","response");
+
                 complaintDetails = response;
-                Log.i("haggaxxx",response.toString());
                 mAdapter = new Adapter_Comment(complaintDetails);
                 mRecyclerView.setAdapter(mAdapter);
-                Log.i("haggaxxx","notify");
                 mAdapter.notifyDataSetChanged();
-                Toast toast = Toast.makeText(getApplicationContext(), "UPDATE THIS METHOD", Toast.LENGTH_LONG);
-                toast.show();
             }
         }, new Response.ErrorListener() {
             @Override
