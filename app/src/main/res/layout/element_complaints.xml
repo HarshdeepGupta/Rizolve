@@ -24,13 +24,14 @@
             <TextView
                 android:id="@+id/complaint_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:textSize="20sp"
                 android:textAlignment="center"
                 android:padding="5dp"
                 android:text="Title"
-                android:background="#c6e2ff"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:background="@drawable/title"
                 android:textColor="#009CEF"/>
 
             <TextView
@@ -66,12 +67,13 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true" />
 
-            <Button
+            <ImageButton
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/complain_upvote"
-                android:background="@drawable/up"
+                android:src="@drawable/up"
+                android:background="@android:color/transparent"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="10dp"
@@ -79,28 +81,20 @@
                 android:layout_alignParentStart="true"
                 android:clickable="true"/>
 
-            <Button
+            <ImageButton
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/down"
+                android:src="@drawable/down"
                 android:textColor="#ffffff"
+                android:background="@android:color/transparent"
                 android:id="@+id/complain_downvote"
                 android:layout_marginLeft="20dp"
                 android:textAlignment="center"
                 android:layout_below="@+id/complaint_description"
                 android:layout_toEndOf="@+id/complain_upvote"
-                android:clickable="true"/>
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/complain_add_comment"
-                android:layout_below="@+id/complaint_description"
-                android:layout_alignParentEnd="true"
-                android:layout_marginBottom="20dp"
-                android:layout_toEndOf="@+id/complain_downvote"
-                android:text="Your comment here" />
+                android:clickable="true"
+                android:layout_marginBottom="20dp"/>
 
 
 

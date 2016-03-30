@@ -25,7 +25,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="match_parent"
         android:layout_margin="16dp"
         android:padding="8dp"
         android:orientation = "vertical"
@@ -63,7 +63,7 @@
             android:layout_width = "match_parent"
             android:layout_height="wrap_content"
             android:hint="Username"
-            android:drawableLeft="@drawable/user"
+            android:drawableLeft="@drawable/profile"
             android:drawablePadding="10dp"
             android:textColorHint="#AFB6C0"
             android:textSize="22dp"
@@ -94,16 +94,13 @@
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:onClick="login_method"
             android:text="Sign In"
             android:background="#3EC5CC"
             android:textColor="#E4EBED"
-            android:gravity="center"
-            android:layout_margin="8dp"
-            android:textSize="20dp"
-            android:padding="5dp"
-            android:elevation="4dp" />
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
