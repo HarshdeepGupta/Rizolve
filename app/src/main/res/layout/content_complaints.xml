@@ -8,10 +8,94 @@
     tools:context="com.example.hd.rizolve.ComplaintsActivity"
     tools:showIn="@layout/activity_complaints">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/complain_detail_card_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+        android:elevation="10dp"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        card_view:cardCornerRadius="4dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/complain_detail_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:padding="5dp"
+                android:text="Title" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="By:"
+                android:padding="5dp"
+                android:id="@+id/complain_detail_posted_by"
+                android:layout_below="@+id/complain_detail_title"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="At:"
+                android:padding="5dp"
+                android:id="@+id/complain_detail_created_at"
+                android:layout_below="@+id/complain_detail_title"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Description"
+                android:padding="5dp"
+                android:id="@+id/complain_detail_description"
+                android:layout_below="@+id/complain_detail_created_at"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upvote"
+                android:id="@+id/complain_detail_upvote"
+                android:layout_below="@+id/complain_detail_description"
+                android:layout_alignParentStart="true"
+                android:clickable="true"/>
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DownVote"
+                android:id="@+id/complain_detail_downvote"
+                android:layout_below="@+id/complain_detail_description"
+                android:layout_toEndOf="@+id/complain_detail_upvote"
+                android:clickable="true"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/comment_recycler_view"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/complain_detail_upvote"
+                android:layout_gravity="center_horizontal|top" />
+
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
 
 </android.support.v4.widget.NestedScrollView>
