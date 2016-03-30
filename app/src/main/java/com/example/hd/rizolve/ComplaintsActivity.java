@@ -66,7 +66,7 @@ public class ComplaintsActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_complaints);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
 
 

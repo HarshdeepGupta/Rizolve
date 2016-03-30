@@ -5,10 +5,12 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 
 import android.support.v7.app.AppCompatActivity;
+
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -43,7 +45,7 @@ public class Adapter_Complaints_Resolve extends RecyclerView.Adapter<Adapter_Com
     static String serverAddress;
     static RequestQueue myQueue;
     final int duration = Toast.LENGTH_LONG;
-
+    JSONObject complaint_details;
     Globals global;
     Context context;
     Activity parent;
@@ -234,6 +236,50 @@ public class Adapter_Complaints_Resolve extends RecyclerView.Adapter<Adapter_Com
                 myQueue.add(request0);
             }
         });
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+
+
+                String url_complaints_detail = serverAddress.concat("/complaint/complaint_data.json?complaint_id=").
+                        concat(String.valueOf(complaint_id));
+
+                JsonObjectRequest request0 = new JsonObjectRequest(Request.Method.GET,url_complaints_detail,
+                        null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        complaint_details = response;
+                        Intent intent = new Intent(v.getContext(),ComplaintsActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("complaint_details", complaint_details.toString());
+                        bundle.putString("title",item.title);
+                        bundle.putString("postedBy",item.name);
+                        bundle.putString("created_at",item.date);
+                        bundle.putString("description",item.description);
+                        bundle.putString("upvote",String.valueOf(item.up_vote));
+                        bundle.putString("downvote", String.valueOf(item.down_vote));
+                        bundle.putString("id", String.valueOf(item.complaint_id));
+                        intent.putExtras(bundle);
+                        v.getContext().startActivity(intent);
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast toast = Toast.makeText(context, "Network Error", duration);
+                        toast.show();
+                    }
+                }) ;
+                //Add the first request in the queue
+                Log.i("haggaxx","getting here3");
+                myQueue.add(request0);
+            }
+        });
+
 
 
 

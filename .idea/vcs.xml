@@ -4,8 +4,12 @@
 <<<<<<< HEAD
     <mapping directory="" vcs="" />
 =======
+<<<<<<< HEAD
+    <mapping directory="" vcs="" />
+=======
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+>>>>>>> refs/remotes/origin/master
 >>>>>>> refs/remotes/origin/master
   </component>
 </project>
