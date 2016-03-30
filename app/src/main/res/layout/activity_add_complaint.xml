@@ -102,6 +102,7 @@
         android:layout_marginRight="10dp"/>
 
     <LinearLayout
+        android:id="@+id/decide_post_to"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"

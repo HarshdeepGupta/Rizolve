@@ -67,6 +67,7 @@ public class add_complaint extends AppCompatActivity {
         title1 = (EditText) findViewById(R.id.complaint_title);
         description1 = (EditText) findViewById(R.id.complaint_description);
         final LinearLayout layout1 = (LinearLayout) findViewById(R.id.decide_individual);
+        final LinearLayout layout3 = (LinearLayout) findViewById(R.id.decide_post_to);
         final RelativeLayout layout2 = (RelativeLayout) findViewById(R.id.decide_insti1);
         final RadioButton button1 = (RadioButton) findViewById(R.id.student_radio_button);
         final RadioButton button2 = (RadioButton) findViewById(R.id.faculty_radio_button);
@@ -100,6 +101,7 @@ public class add_complaint extends AppCompatActivity {
                 layout1.setVisibility(View.VISIBLE);
                 complaint_type = 0;
                 layout2.setVisibility(View.INVISIBLE);
+                layout3.setVisibility(View.INVISIBLE);
 
             }
         };
@@ -109,6 +111,7 @@ public class add_complaint extends AppCompatActivity {
                 button5.setChecked(false);
                 layout1.setVisibility(View.INVISIBLE);
                 layout2.setVisibility(View.INVISIBLE);
+                layout3.setVisibility(View.INVISIBLE);
                 complaint_type = 1;
                 resolve_category = 0;
             }
@@ -119,6 +122,7 @@ public class add_complaint extends AppCompatActivity {
                 button4.setChecked(false);
                 layout1.setVisibility(View.INVISIBLE);
                 layout2.setVisibility(View.VISIBLE);
+                layout3.setVisibility(View.VISIBLE);
                 complaint_type = 2;
             }
         };
