@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -48,7 +49,6 @@ public class ComplaintsActivity extends AppCompatActivity {
         try{
 
             Log.i("hagga","here1");
-
             complaintDetails = new JSONObject(intent.getStringExtra("complaint_details"));
             postedBy = intent.getStringExtra("postedBy");
             title = intent.getStringExtra("title");
@@ -57,7 +57,6 @@ public class ComplaintsActivity extends AppCompatActivity {
             upvote = intent.getStringExtra("upvote");
             downvote = intent.getStringExtra("downvote");
             id = intent.getStringExtra("id");
-
         }
         catch (JSONException e){
 
@@ -90,7 +89,33 @@ public class ComplaintsActivity extends AppCompatActivity {
         mAdapter = new Adapter_Comment(complaintDetails);
         //Log.i("hagga", complaints_data.toString());
 
+
+        mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+                int action = e.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_MOVE:
+                        rv.getParent().requestDisallowInterceptTouchEvent(true);
+                        break;
+                }
+                return false;
+            }
+
+
+            @Override
+            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+    });
+
         mRecyclerView.setAdapter(mAdapter);
+
 
         TextView Title;
         TextView description_;
@@ -195,7 +220,7 @@ public class ComplaintsActivity extends AppCompatActivity {
     private void showEditDialog() {
         FragmentManager fm = getSupportFragmentManager();
         addComment dialog = new addComment();
-        dialog.show(fm, "fragment_edit_name");
+        dialog.show(fm, "fragment_edit_comment");
     }
 
     public void onFinishEditDialog(String inputText) {
@@ -212,9 +237,11 @@ public class ComplaintsActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 Log.i("hagga3","response");
                 complaintDetails = response;
+                Log.i("haggaxxx",response.toString());
                 mAdapter = new Adapter_Comment(complaintDetails);
+                mRecyclerView.setAdapter(mAdapter);
+                Log.i("haggaxxx","notify");
                 mAdapter.notifyDataSetChanged();
-//                mAdapter.
                 Toast toast = Toast.makeText(getApplicationContext(), "UPDATE THIS METHOD", Toast.LENGTH_LONG);
                 toast.show();
             }

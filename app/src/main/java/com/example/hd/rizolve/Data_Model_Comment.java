@@ -55,7 +55,7 @@ public class Data_Model_Comment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        for (int i = 0; i < jsonObjects.length(); i++) {
+        for (int i = 0; i < object1.length(); i++) {
             try {
                 gradesData.add(new Data_Model_Comment(object1.getJSONObject(i),object2.getJSONObject(i),object3.getString(i)));
             } catch (JSONException e) {
