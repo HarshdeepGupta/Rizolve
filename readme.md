@@ -11,4 +11,4 @@ end users can submit their complaint/grievance to the concerned authorities. The
 
 For details such as the design of App, server and database, API, please read the [design document](/design_doc.pdf)
 
-For details on problem statement of (this was built as a part of course), please refer to the [problem statement](/problem_statement.pdf)
+For details on problem statement (this app was built as a course assignment), please refer to the [problem statement](/problem_statement.pdf)
